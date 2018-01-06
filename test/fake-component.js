@@ -13,6 +13,10 @@ export default class FakeComponent {
 		this.props = this.fakeStore.dispatch(action);
 	};
 
+	updateProps = () => {
+		this.props = this.fakeStore.state;
+	};
+
 	setState = (newState) => {
 		Object.assign(this.state, newState);
 	};
