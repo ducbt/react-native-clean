@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Provider} from 'react-redux';
-import AppComponent from "./app-component";
+import AppComponent from "./app/app-component";
 import store from './common/state/global-store';
 import SignInPresenter from './auth/sign-in/sign-in-presenter'
 

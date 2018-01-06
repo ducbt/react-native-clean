@@ -16,8 +16,8 @@ export default class SignInPresenter {
 		this.dispatch({
 			type: 'INITSIGNIN', vm: () => {
 				return {
-					status : 'not-submitted',
-					message : ''
+					status: 'not-submitted',
+					message: ''
 				};
 			}
 		})
@@ -31,19 +31,24 @@ export default class SignInPresenter {
 		signInModel.status = signInResponse.status;
 		signInModel.message = signInResponse.message;
 
-		if(signInModel.status === 'submitted-success') {
-			 await StorageGateway.set('userToken', signInResponse.token)
+		if (signInModel.status === 'submitted-success') {
+			await StorageGateway.set('userToken', signInResponse.token);
+			debugger;
+			componentContext.props.navigation.navigate('Home');
+
+		} else {
+			this.dispatch({
+				type: 'SIGNIN', model: signInModel, vm: (model) => {
+					const viewModel = {
+						status: model.status,
+						message: model.message,
+					};
+					return viewModel;
+				}
+			});
 		}
 
-		this.dispatch({
-			type: 'SIGNIN', model: signInModel, vm: (model) => {
-				const viewModel = {
-					status:model.status,
-					message: model.message,
-				};
-				return viewModel;
-			}
-		});
+
 	}
 
 }

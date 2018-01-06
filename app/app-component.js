@@ -3,8 +3,8 @@ import {
 	Button,
 } from 'react-native';
 import {StackNavigator, DrawerNavigator} from "react-navigation";
-import HomeComponent from "./home/home-component";
-import SignInComponent from "./auth/sign-in/sign-in-component";
+import HomeComponent from "../home/home-component";
+import SignInComponent from "../auth/sign-in/sign-in-component";
 
 const topDrawer = DrawerNavigator({
 	Home: {screen: HomeComponent},
@@ -21,5 +21,11 @@ const AppNavigator = StackNavigator({
 	})
 });
 
-export default AppNavigator;
+export default class AppComponent  extends Component {
+	render() {
+		return (
+			<AppNavigator/>
+		);
+	}
+}
 
