@@ -3,17 +3,20 @@ import SignInComponentPresenter from '../auth/sign-in/sign-in-presenter'
 import FakeComponent from '../test/fake-component'
 import ApiGateway from "../common/api-gateway";
 import StorageGateway from "../common/storage-gateway";
+import FakeStore from "../test/fake-store";
 
+let fakeStore = null;
 let fakeSignInComponent = null;
 let fakeAppComponent = null;
 let signInPresenter = null;
 let appComponentPresenter = null;
 
 beforeEach(() => {
-	fakeSignInComponent = new FakeComponent();
-	fakeAppComponent = new FakeComponent();
-	signInPresenter = new SignInComponentPresenter(fakeSignInComponent.dispatch);
-	appComponentPresenter = new AppComponentPresenter(fakeAppComponent.dispatch);
+	fakeStore = new FakeStore();
+	fakeSignInComponent = new FakeComponent(fakeStore);
+	fakeAppComponent = new FakeComponent(fakeStore);
+	signInPresenter = new SignInComponentPresenter(fakeStore.dispatch);
+	appComponentPresenter = new AppComponentPresenter(fakeStore.dispatch);
 });
 
 it('should only load non auth items into drawer menu', async() => {
@@ -59,7 +62,7 @@ fit('should NOT add books option to drawer items when app is is logged in', asyn
 
 	appComponentPresenter.load();
 
-	//expect(fakeAppComponent.props.drawerItems).toEqual(['Home','SignIn']);
+	expect(fakeStore.state).toEqual(['Home','SignIn']);
 
 });
 
