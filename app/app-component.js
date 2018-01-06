@@ -6,23 +6,28 @@ import {StackNavigator, DrawerNavigator} from "react-navigation";
 import HomeComponent from "../home/home-component";
 import SignInComponent from "../auth/sign-in/sign-in-component";
 
-const topDrawer = DrawerNavigator({
-	Home: {screen: HomeComponent},
-	SignIn: {screen: SignInComponent}
-});
 
-const AppNavigator = StackNavigator({
-	Drawer: {screen: topDrawer},
-}, {
-	navigationOptions: ({navigation}) => ({
-		headerLeft: <Button onPress={() => {
-			navigation.navigate('DrawerToggle')
-		}} title="Menu"/>
-	})
-});
 
 export default class AppComponent  extends Component {
 	render() {
+
+		const topDrawer = DrawerNavigator({
+			Home: {screen: HomeComponent},
+			SignIn: {screen: SignInComponent}
+		});
+
+		const AppNavigator = StackNavigator({
+			Drawer: {screen: topDrawer},
+		}, {
+			navigationOptions: ({navigation}) => ({
+				headerLeft: <Button onPress={() => {
+					navigation.navigate('DrawerToggle')
+				}} title="Menu"/>
+			})
+		});
+
+		// AppNavigator
+
 		return (
 			<AppNavigator/>
 		);
