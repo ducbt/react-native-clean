@@ -33,20 +33,20 @@ export default class SignInPresenter {
 
 		if (signInModel.status === 'submitted-success') {
 			await StorageGateway.set('userToken', signInResponse.token);
-			debugger;
-			componentContext.props.navigation.navigate('Home');
+			// debugger;
+			// componentContext.props.navigation.navigate('Home');
 
-		} else {
-			this.dispatch({
-				type: 'SIGNIN', model: signInModel, vm: (model) => {
-					const viewModel = {
-						status: model.status,
-						message: model.message,
-					};
-					return viewModel;
-				}
-			});
 		}
+
+		this.dispatch({
+			type: 'SIGNIN', model: signInModel, vm: (model) => {
+				const viewModel = {
+					status: model.status,
+					message: model.message,
+				};
+				return viewModel;
+			}
+		});
 
 
 	}

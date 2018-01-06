@@ -11,10 +11,11 @@ import SignInComponent from "../auth/sign-in/sign-in-component";
 export default class AppComponent  extends Component {
 	render() {
 
-		const topDrawer = DrawerNavigator({
+		const items = {
 			Home: {screen: HomeComponent},
 			SignIn: {screen: SignInComponent}
-		});
+		};
+		const topDrawer = DrawerNavigator(items);
 
 		const AppNavigator = StackNavigator({
 			Drawer: {screen: topDrawer},
