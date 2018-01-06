@@ -1,21 +1,44 @@
 import AppComponentPresenter from './app-component.presenter';
-// import StorageGateway from "../../common/storage-gateway";
-// import ApiGateway from '../../common/api-gateway'
+import SignInComponentPresenter from '../auth/sign-in/sign-in-presenter'
 import FakeComponent from '../test/fake-component'
+import ApiGateway from "../common/api-gateway";
+import StorageGateway from "../common/storage-gateway";
 
-let fakeComponent = null;
+let fakeSignInComponent = null;
+let fakeAppComponent = null;
 let signInPresenter = null;
+let appComponentPresenter = null;
 
 beforeEach(() => {
-	fakeComponent = new FakeComponent();
-	signInPresenter = new AppComponentPresenter(fakeComponent.dispatch);
+	fakeSignInComponent = new FakeComponent();
+	fakeAppComponent = new FakeComponent();
+	signInPresenter = new SignInComponentPresenter(fakeSignInComponent.dispatch);
+	appComponentPresenter = new AppComponentPresenter(fakeAppComponent.dispatch);
 });
 
-// it('should only load non auth items into drawer menu', async() => {
-//
-// 	console.log(fakeComponent.props)
-// 	//expect(fakeComponent.props.drawerItems).toEqual(['Home','SignIn']);
-// });
+it('should only load non auth items into drawer menu', async() => {
+	expect(fakeAppComponent.props.drawerItems).toEqual(['Home','SignIn']);
+});
+
+it('should add books option to drawer items when app is is logged in', async() => {
+
+	let fakeStoreageStore = null;
+	ApiGateway.prototype.save = () => {
+		return Promise.resolve({
+			"success": true,
+			"message": "user signIn successful",
+			"token" : "123"
+		});
+	};
+
+	StorageGateway.set = (key, val) => { fakeStoreageStore = val;};
+	StorageGateway.get = () => {return fakeStoreageStore;};
+
+	await signInPresenter.signIn(fakeSignInComponent);
+
+	expect(fakeAppComponent.props.drawerItems).toEqual(['Home','SignIn','Books']);
+
+});
 
 
 
