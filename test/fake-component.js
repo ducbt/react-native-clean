@@ -1,5 +1,3 @@
-import {globalStateReducer} from "../common/state/global-state-reducer";
-
 export default class FakeComponent {
 
 	props = {};
@@ -15,12 +13,8 @@ export default class FakeComponent {
 		this.props = this.fakeStore.dispatch(action);
 	};
 
-
 	setState = (newState) => {
 		Object.assign(this.state, newState);
 	};
-
-
-
 
 }

@@ -10,7 +10,7 @@ export default class FakeStore {
 	};
 
 	dispatch = (action) => {
-		this.state = globalStateReducer(this.globalState, action);
+		this.state = globalStateReducer(this.state, action);
 		return this.state;
 	};
 
