@@ -9,7 +9,7 @@ import {
 
 export default class HomeComponent extends Component {
 	static navigationOptions = {
-		title: 'Home'
+		title: 'Books'
 	};
 
 	render() {
@@ -20,7 +20,7 @@ export default class HomeComponent extends Component {
 				<View style={styles.subContainer}>
 
 					<Text>I am the home component</Text>
-
+					
 				</View>
 
 			</View>
