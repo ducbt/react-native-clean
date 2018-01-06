@@ -22,6 +22,7 @@ export default class ApiGateway {
 	}
 
 	async save(dto) {
+		//debugger;
 		return fetch(this.configEndpoint, ApiGateway.generateHeader(dto, this.post, true))
 			.then(ApiGateway.unpackJson);
 	}

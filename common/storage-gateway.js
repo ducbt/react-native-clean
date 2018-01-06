@@ -6,10 +6,8 @@ export default class StorageGateway {
 
 	static async set(key, value) {
 
-		//debugger;
-
 		try {
-			AsyncStorage.setItem('@MySuperStore:key', value);
+			AsyncStorage.setItem(key, value);
 		}
 		catch(ex) {
 			console.log(ex);
