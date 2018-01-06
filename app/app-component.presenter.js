@@ -8,4 +8,8 @@ export default class AppComponentPresenter {
 		this.dispatch = dispatch;
 	}
 
+	load() {
+		this.dispatch({type: 'NAVIGATION'})
+	}
+
 }

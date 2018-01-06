@@ -9,6 +9,10 @@ import SignInComponent from "../auth/sign-in/sign-in-component";
 
 
 export default class AppComponent  extends Component {
+
+
+
+
 	render() {
 
 		const items = {

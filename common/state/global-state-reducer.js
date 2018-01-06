@@ -1,10 +1,21 @@
-export const globalStateReducer = (state = {booksListViewModel:{}, signInViewModel:{}, drawerItems:['Home','SignIn']}, action) => {
+export const globalStateReducer = (state = {booksListViewModel:{}, signInViewModel:{}, drawerItems:['Home','SignIn'], authModel:{}}, action) => {
 
   switch (action.type) {
 		case 'SIGNIN':
-			return {signInViewModel : action.vm(action.model)};
+
+			console.log('SIGNIN');
+			console.log(action.model);
+
+			return { ...state, authModel: action.model, signInViewModel : action.vm(action.model) };
 		case 'INITSIGNIN':
-		  return {signInViewModel : action.vm()};
+			return { ...state, signInViewModel : action.vm() };
+		case 'NAVIGATION':
+
+			console.log('NAVIGATION');
+			console.log(state.authModel);
+
+
+			return { ...state, drawerItems : ['Home','SignIn','Books'] };
     default:
       return state;
   }

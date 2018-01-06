@@ -36,9 +36,33 @@ it('should add books option to drawer items when app is is logged in', async() =
 
 	await signInPresenter.signIn(fakeSignInComponent);
 
+	appComponentPresenter.load();
+
 	expect(fakeAppComponent.props.drawerItems).toEqual(['Home','SignIn','Books']);
 
 });
+
+fit('should NOT add books option to drawer items when app is is logged in', async() => {
+
+	let fakeStoreageStore = null;
+	ApiGateway.prototype.save = () => {
+		return Promise.resolve({
+			"success": false,
+			"message": "user signIn failed"
+		});
+	};
+
+	StorageGateway.set = (key, val) => { fakeStoreageStore = val;};
+	StorageGateway.get = () => {return fakeStoreageStore};
+
+	await signInPresenter.signIn(fakeSignInComponent);
+
+	appComponentPresenter.load();
+
+	//expect(fakeAppComponent.props.drawerItems).toEqual(['Home','SignIn']);
+
+});
+
 
 
 
