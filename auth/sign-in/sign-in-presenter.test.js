@@ -32,7 +32,6 @@ it('should load initial viewmodel', async() => {
 
 it('successful sign-in', async() => {
 
-	//stub the boundary
 	fakeComponent.state = {userName:'blah', password:'blah_1'};
 	ApiGateway.prototype.save = StubGenerator.successfulLogin();
 	spyOn(ApiGateway.prototype,'save').and.callThrough();
@@ -49,7 +48,6 @@ it('successful sign-in', async() => {
 
 it('un-successful sign-in', async() => {
 
-	//stub the boundary
 	fakeComponent.state = {userName:'blah', password:'blah_1'};
 	ApiGateway.prototype.save = StubGenerator.failedLogin();
 	spyOn(StorageGateway,'set');

@@ -1,6 +1,5 @@
 export const globalStateReducer = (state = {booksListViewModel:{}, signInViewModel:{}, drawerItems:['Home','SignIn'], authModel:{}}, action) => {
 
-
 	switch (action.type) {
 		case 'SIGNIN':
 			return { ...state, authModel: action.model, signInViewModel : action.vm(action.model) };
