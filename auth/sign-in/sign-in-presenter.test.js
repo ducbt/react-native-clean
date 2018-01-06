@@ -3,6 +3,7 @@ import ApiGateway from '../../common/api-gateway'
 import FakeComponent from '../../test/fake-component'
 import StorageGateway from "../../common/storage-gateway";
 import FakeStore from "../../test/fake-store";
+import StubGenerator from "../../test/stub-generator";
 
 let fakeStore = null;
 let fakeComponent = null;
@@ -33,13 +34,7 @@ it('successful sign-in', async() => {
 
 	//stub the boundary
 	fakeComponent.state = {userName:'blah', password:'blah_1'};
-	ApiGateway.prototype.save = () => {
-		return Promise.resolve({
-			"success": true,
-			"message": "user signIn successful",
-			"token" : "123"
-		});
-	};
+	ApiGateway.prototype.save = StubGenerator.successfulLogin();
 	spyOn(ApiGateway.prototype,'save').and.callThrough();
 	spyOn(StorageGateway,'set');
 
@@ -56,12 +51,7 @@ it('un-successful sign-in', async() => {
 
 	//stub the boundary
 	fakeComponent.state = {userName:'blah', password:'blah_1'};
-	ApiGateway.prototype.save = () => {
-		return Promise.resolve({
-			"success": false,
-			"message": "user signIn failed"
-		});
-	};
+	ApiGateway.prototype.save = StubGenerator.failedLogin();
 	spyOn(StorageGateway,'set');
 
 	await signInPresenter.signIn(fakeComponent);

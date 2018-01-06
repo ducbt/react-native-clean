@@ -10,9 +10,6 @@ import SignInComponent from "../auth/sign-in/sign-in-component";
 
 export default class AppComponent  extends Component {
 
-
-
-
 	render() {
 
 		const items = {
@@ -30,9 +27,7 @@ export default class AppComponent  extends Component {
 				}} title="Menu"/>
 			})
 		});
-
-		// AppNavigator
-
+		
 		return (
 			<AppNavigator/>
 		);
