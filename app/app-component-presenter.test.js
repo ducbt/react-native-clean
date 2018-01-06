@@ -40,7 +40,7 @@ it('should add protected item to drawer when user logs in', async () => {
 
 });
 
-it('should add protected item to drawer when user logs in', async () => {
+it('should not add protected item to drawer when user logs in', async () => {
 
 	ApiGateway.prototype.save = () => {
 		return Promise.resolve({
