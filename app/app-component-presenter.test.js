@@ -2,7 +2,6 @@ import AppComponentPresenter from './app-component.presenter';
 import SignInComponentPresenter from '../auth/sign-in/sign-in-presenter'
 import FakeComponent from '../test/fake-component'
 import ApiGateway from "../common/api-gateway";
-import StorageGateway from "../common/storage-gateway";
 import FakeStore from "../test/fake-store";
 
 let fakeStore = null;
@@ -23,24 +22,14 @@ it('should load initial drawer menu', async () => {
 	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn']);
 });
 
-it('should add books option to drawer items when app is is logged in', async () => {
+it('should add protected item to drawer when user logs in', async () => {
 
-	let fakeStoreageStore = null;
 	ApiGateway.prototype.save = () => {
 		return Promise.resolve({
 			"success": true,
 			"message": "user signIn successful",
 			"token": "123"
 		});
-	};
-
-	StorageGateway.set = (key, val) => {
-		fakeStoreageStore = val;
-	};
-	StorageGateway.get = () => {
-
-		console.log('getting stored value');
-
 	};
 
 	await signInPresenter.signIn(fakeSignInComponent);
@@ -51,9 +40,8 @@ it('should add books option to drawer items when app is is logged in', async () 
 
 });
 
-it('should NOT add books option to drawer items when app is is logged in', async () => {
+it('should add protected item to drawer when user logs in', async () => {
 
-	let fakeStoreageStore = null;
 	ApiGateway.prototype.save = () => {
 		return Promise.resolve({
 			"success": false,
