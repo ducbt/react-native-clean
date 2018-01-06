@@ -25,7 +25,7 @@ it('should load initial viewmodel', async() => {
 	expect(fakeComponent.props.signInViewModel.message).toBe('');
 });
 
-fit('successful sign-in', async() => {
+it('successful sign-in', async() => {
 
 	//stub the boundary
 	fakeComponent.state = {userName:'blah', password:'blah_1'};
