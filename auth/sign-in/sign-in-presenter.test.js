@@ -10,22 +10,22 @@ beforeEach(() => {
 	signInPresenter = new SignInPresenter(fakeComponent.dispatch);
 });
 
-it('should load initial state', async() => {
+xit('should load initial state', async() => {
 	expect(fakeComponent.props.signInViewModel).toEqual({});
 });
 
-it('should load initial state', async() => {
+xit('should load initial state', async() => {
 	const globalState = signInPresenter.getInitialState();
 	expect(globalState).toEqual({userName: '', password: ''});
 });
 
-it('should load initial viewmodel', async() => {
+xit('should load initial viewmodel', async() => {
 	signInPresenter.load();
 	expect(fakeComponent.props.signInViewModel.status).toBe('not-submitted');
 	expect(fakeComponent.props.signInViewModel.message).toBe('');
 });
 
-it('successful sign-in', async() => {
+xit('successful sign-in', async() => {
 
 	//stub the boundary
 	fakeComponent.state = {userName:'blah', password:'blah_1'};
@@ -48,7 +48,7 @@ it('successful sign-in', async() => {
 
 });
 
-it('un-successful sign-in', async() => {
+xit('un-successful sign-in', async() => {
 
 	//stub the boundary
 	fakeComponent.state = {userName:'blah', password:'blah_1'};

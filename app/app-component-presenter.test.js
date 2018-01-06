@@ -23,7 +23,7 @@ it('should only load non auth items into drawer menu', async() => {
 	expect(fakeAppComponent.props.drawerItems).toEqual(['Home','SignIn']);
 });
 
-it('should add books option to drawer items when app is is logged in', async() => {
+fit('should add books option to drawer items when app is is logged in', async() => {
 
 	let fakeStoreageStore = null;
 	ApiGateway.prototype.save = () => {
@@ -45,7 +45,7 @@ it('should add books option to drawer items when app is is logged in', async() =
 
 });
 
-fit('should NOT add books option to drawer items when app is is logged in', async() => {
+it('should NOT add books option to drawer items when app is is logged in', async() => {
 
 	let fakeStoreageStore = null;
 	ApiGateway.prototype.save = () => {
@@ -62,7 +62,7 @@ fit('should NOT add books option to drawer items when app is is logged in', asyn
 
 	appComponentPresenter.load();
 
-	expect(fakeStore.state).toEqual(['Home','SignIn']);
+	expect(fakeStore.state.drawerItems).toEqual(['Home','SignIn']);
 
 });
 
