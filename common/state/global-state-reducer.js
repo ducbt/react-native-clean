@@ -1,5 +1,7 @@
 export const globalStateReducer = (state = {booksListViewModel:{}, signInViewModel:{}, drawerItems:['Home','SignIn'], authModel:{}}, action) => {
-  switch (action.type) {
+
+
+	switch (action.type) {
 		case 'SIGNIN':
 			return { ...state, authModel: action.model, signInViewModel : action.vm(action.model) };
 		case 'INITSIGNIN':
@@ -8,7 +10,7 @@ export const globalStateReducer = (state = {booksListViewModel:{}, signInViewMod
 			if(state.authModel.status === 'submitted-success'){
 				return { ...state, drawerItems : ['Home','SignIn','Books'] };
 			}else {
-				return { ...state, drawerItems : ['Home','SignIn'] };
+				return state;
 			}
     default:
       return state;

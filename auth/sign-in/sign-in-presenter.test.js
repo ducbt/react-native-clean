@@ -2,30 +2,34 @@ import SignInPresenter from './sign-in-presenter';
 import ApiGateway from '../../common/api-gateway'
 import FakeComponent from '../../test/fake-component'
 import StorageGateway from "../../common/storage-gateway";
+import FakeStore from "../../test/fake-store";
+
+let fakeStore = null;
 let fakeComponent = null;
 let signInPresenter = null;
 
 beforeEach(() => {
-	fakeComponent = new FakeComponent();
+	fakeStore = new FakeStore();
+	fakeComponent = new FakeComponent(fakeStore);
 	signInPresenter = new SignInPresenter(fakeComponent.dispatch);
 });
 
-xit('should load initial state', async() => {
+it('should set initial viewmodel into component', async() => {
 	expect(fakeComponent.props.signInViewModel).toEqual({});
 });
 
-xit('should load initial state', async() => {
+it('should set intial state', async() => {
 	const globalState = signInPresenter.getInitialState();
 	expect(globalState).toEqual({userName: '', password: ''});
 });
 
-xit('should load initial viewmodel', async() => {
+it('should load initial viewmodel', async() => {
 	signInPresenter.load();
 	expect(fakeComponent.props.signInViewModel.status).toBe('not-submitted');
 	expect(fakeComponent.props.signInViewModel.message).toBe('');
 });
 
-xit('successful sign-in', async() => {
+it('successful sign-in', async() => {
 
 	//stub the boundary
 	fakeComponent.state = {userName:'blah', password:'blah_1'};
@@ -48,7 +52,7 @@ xit('successful sign-in', async() => {
 
 });
 
-xit('un-successful sign-in', async() => {
+it('un-successful sign-in', async() => {
 
 	//stub the boundary
 	fakeComponent.state = {userName:'blah', password:'blah_1'};

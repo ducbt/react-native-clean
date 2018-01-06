@@ -15,37 +15,43 @@ beforeEach(() => {
 	fakeStore = new FakeStore();
 	fakeSignInComponent = new FakeComponent(fakeStore);
 	fakeAppComponent = new FakeComponent(fakeStore);
-	signInPresenter = new SignInComponentPresenter(fakeStore.dispatch);
-	appComponentPresenter = new AppComponentPresenter(fakeStore.dispatch);
+	signInPresenter = new SignInComponentPresenter(fakeSignInComponent.dispatch);
+	appComponentPresenter = new AppComponentPresenter(fakeAppComponent.dispatch);
 });
 
-it('should only load non auth items into drawer menu', async() => {
-	expect(fakeAppComponent.props.drawerItems).toEqual(['Home','SignIn']);
+it('should load initial drawer menu', async () => {
+	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn']);
 });
 
-fit('should add books option to drawer items when app is is logged in', async() => {
+it('should add books option to drawer items when app is is logged in', async () => {
 
 	let fakeStoreageStore = null;
 	ApiGateway.prototype.save = () => {
 		return Promise.resolve({
 			"success": true,
 			"message": "user signIn successful",
-			"token" : "123"
+			"token": "123"
 		});
 	};
 
-	StorageGateway.set = (key, val) => { fakeStoreageStore = val;};
-	StorageGateway.get = () => {return fakeStoreageStore;};
+	StorageGateway.set = (key, val) => {
+		fakeStoreageStore = val;
+	};
+	StorageGateway.get = () => {
+
+		console.log('getting stored value');
+
+	};
 
 	await signInPresenter.signIn(fakeSignInComponent);
 
 	appComponentPresenter.load();
 
-	expect(fakeAppComponent.props.drawerItems).toEqual(['Home','SignIn','Books']);
+	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn', 'Books']);
 
 });
 
-it('should NOT add books option to drawer items when app is is logged in', async() => {
+it('should NOT add books option to drawer items when app is is logged in', async () => {
 
 	let fakeStoreageStore = null;
 	ApiGateway.prototype.save = () => {
@@ -55,14 +61,11 @@ it('should NOT add books option to drawer items when app is is logged in', async
 		});
 	};
 
-	StorageGateway.set = (key, val) => { fakeStoreageStore = val;};
-	StorageGateway.get = () => {return fakeStoreageStore};
-
 	await signInPresenter.signIn(fakeSignInComponent);
 
 	appComponentPresenter.load();
 
-	expect(fakeStore.state.drawerItems).toEqual(['Home','SignIn']);
+	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn']);
 
 });
 

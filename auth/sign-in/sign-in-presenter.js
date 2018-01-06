@@ -33,9 +33,6 @@ export default class SignInPresenter {
 
 		if (signInModel.status === 'submitted-success') {
 			await StorageGateway.set('userToken', signInResponse.token);
-			// debugger;
-			// componentContext.props.navigation.navigate('Home');
-
 		}
 
 		this.dispatch({
