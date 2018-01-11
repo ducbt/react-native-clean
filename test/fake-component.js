@@ -11,7 +11,6 @@ export default class FakeComponent {
 
 	dispatch = (action) => {
 		this.props = this.fakeStore.dispatch(action);
-		this.updateProps();
 	};
 
 	updateProps = () => {

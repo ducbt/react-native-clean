@@ -36,7 +36,7 @@ it('should load initial viewmodel', async () => {
 	expect(fakeSignInComponent.props.signInViewModel.message).toBe('');
 });
 
-fit('successful sign-in', async () => {
+it('successful sign-in', async () => {
 
 	fakeSignInComponent.state = {userName: 'blah', password: 'blah_1'};
 	ApiGateway.prototype.save = StubGenerator.successfulLogin();
@@ -50,9 +50,7 @@ fit('successful sign-in', async () => {
 	expect(fakeSignInComponent.props.signInViewModel.message).toBe('user signIn successful');
 	expect(StorageGateway.set).toHaveBeenCalledWith('userToken', '123');
 
-	//fakeAppComponent.updateProps();
-
-	//expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn', 'Books']);
+	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn', 'Books']);
 
 });
 
@@ -67,8 +65,6 @@ it('un-successful sign-in', async () => {
 	expect(fakeSignInComponent.props.signInViewModel.status).toBe('submitted-failed');
 	expect(fakeSignInComponent.props.signInViewModel.message).toBe('user signIn failed');
 	expect(StorageGateway.set).not.toHaveBeenCalled();
-
-	fakeAppComponent.updateProps();
 
 	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn']);
 
