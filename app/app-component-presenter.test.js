@@ -19,11 +19,11 @@ beforeEach(() => {
 	appComponentPresenter = new AppComponentPresenter(fakeAppComponent.dispatch);
 });
 
-test('should load initial drawer menu', async () => {
+it('should load initial drawer menu', async () => {
 	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn']);
 });
 
-test('should add protected item to drawer when user logs in', async () => {
+it('should add protected item to drawer when user logs in', async () => {
 
 	ApiGateway.prototype.save = StubGenerator.successfulLogin();
 
@@ -35,7 +35,7 @@ test('should add protected item to drawer when user logs in', async () => {
 
 });
 
-test('should not add protected item to drawer when user logs in', async () => {
+it('should not add protected item to drawer when user logs in', async () => {
 
 	ApiGateway.prototype.save = StubGenerator.failedLogin();
 
