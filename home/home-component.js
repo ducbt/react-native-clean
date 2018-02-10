@@ -22,7 +22,6 @@ class HomeComponent extends Component {
 
 	render() {
 
-		console.log(this.props.homeViewModel);
 		return (
 			<View style={styles.container}>
 

@@ -7,20 +7,20 @@ import StubGenerator from '../test/stub-generator'
 
 let fakeStore = null;
 let fakeSignInComponent = null;
-let fakeAppComponent = null;
+let fakeHomeComponent = null;
 let signInPresenter = null;
 let homeComponentPresenter = null;
 
 beforeEach(() => {
 	fakeStore = new FakeStore();
 	fakeSignInComponent = new FakeComponent(fakeStore);
-	fakeAppComponent = new FakeComponent(fakeStore);
+	fakeHomeComponent = new FakeComponent(fakeStore);
 	signInPresenter = new SignInComponentPresenter(fakeSignInComponent.dispatch);
-	homeComponentPresenter = new HomeComponentPresenter(fakeAppComponent.dispatch);
+	homeComponentPresenter = new HomeComponentPresenter(fakeHomeComponent.dispatch);
 });
 
 it('should load initial drawer menu', async () => {
-	expect(fakeAppComponent.props.homeViewModel).toEqual({signedIn:false});
+	expect(fakeHomeComponent.props.homeViewModel).toEqual({signedIn:false});
 });
 
 it('should have logged in user message when successfully signed in', async () => {
@@ -29,7 +29,7 @@ it('should have logged in user message when successfully signed in', async () =>
 
 	await signInPresenter.signIn(fakeSignInComponent);
 
-	expect(fakeAppComponent.props.homeViewModel.signedIn).toBe(true);
+	expect(fakeHomeComponent.props.homeViewModel.signedIn).toBe(true);
 
 });
 
@@ -39,7 +39,7 @@ it('should NOT have logged in user message when NOT successfully signed in', asy
 
 	await signInPresenter.signIn(fakeSignInComponent);
 
-	expect(fakeAppComponent.props.homeViewModel.signedIn).toBe(false);
+	expect(fakeHomeComponent.props.homeViewModel.signedIn).toBe(false);
 
 });
 
