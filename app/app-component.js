@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
 	Button,
 } from 'react-native';
@@ -9,13 +9,10 @@ import AutoWire from "../common/auto-wire";
 import {connect} from "react-redux";
 import AppComponentPresenter from "./app-component.presenter";
 
-
 let topDrawer = DrawerNavigator({
 	Home: {screen: HomeComponent},
 	SignIn: {screen: SignInComponent}
 });
-
-//
 
 const AppNavigator = StackNavigator({
 	Drawer: {screen: topDrawer},
@@ -27,8 +24,7 @@ const AppNavigator = StackNavigator({
 	})
 });
 
-class AppComponent  extends Component {
-
+class AppComponent extends Component {
 
 	componentWillMount() {
 		console.log('component mounting');
@@ -43,5 +39,5 @@ class AppComponent  extends Component {
 
 export default connect((state) => {
 	return state;
-}, (dispatch) => (AutoWire.wire(AppComponentPresenter, dispatch,[])))(AppComponent);
+}, (dispatch) => (AutoWire.wire(AppComponentPresenter, dispatch, [])))(AppComponent);
 
