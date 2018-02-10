@@ -1,4 +1,4 @@
-export default class HomeComponentPresenter {
+export default class HomePresenter {
 	dispatch = null;
 
 	constructor(dispatch) {

@@ -6,19 +6,29 @@ import {
 	Button,
 	TextInput
 } from 'react-native';
+import HomePresenter from "./home-presenter";
+import AutoWire from "../common/auto-wire";
+import {connect} from "react-redux";
 
-export default class HomeComponent extends Component {
+class HomeComponent extends Component {
+
 	static navigationOptions = {
 		title: 'Home'
 	};
 
+	componentDidMount() {
+
+	}
+
 	render() {
+
+		console.log(this.props);
 		return (
 			<View style={styles.container}>
 
 				<View style={styles.subContainer}>
 
-					<Text>I am the home component</Text>
+					<Text>I am the home component </Text>
 
 				</View>
 
@@ -26,6 +36,10 @@ export default class HomeComponent extends Component {
 		);
 	}
 }
+
+export default connect((state) => {
+	return state;
+}, (dispatch) => (AutoWire.wire(HomePresenter, dispatch, [])))(HomeComponent);
 
 const styles = StyleSheet.create({
 	container: {

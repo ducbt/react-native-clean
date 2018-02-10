@@ -4,7 +4,7 @@ import FakeComponent from '../../test/fake-component'
 import StorageGateway from "../../common/storage-gateway";
 import FakeStore from "../../test/fake-store";
 import StubGenerator from "../../test/stub-generator";
-import AppComponentPresenter from "../../home/home-component.presenter";
+import AppComponentPresenter from "../../home/home-presenter";
 
 let fakeStore = null;
 let fakeAppComponent = null;

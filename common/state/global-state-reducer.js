@@ -1,4 +1,4 @@
-export const globalStateReducer = (state = {booksListViewModel:{}, homeViewModel:{},signInViewModel:{}, drawerItems:['Home','SignIn'], authModel:{}}, action) => {
+export const globalStateReducer = (state = {booksListViewModel:{}, homeViewModel:{signedIn:false},signInViewModel:{}, drawerItems:['Home','SignIn'], authModel:{}}, action) => {
 
 	switch (action.type) {
 		case 'SIGNIN':

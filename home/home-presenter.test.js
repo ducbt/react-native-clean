@@ -1,4 +1,4 @@
-import HomeComponentPresenter from './home-component.presenter';
+import HomeComponentPresenter from './home-presenter';
 import SignInComponentPresenter from '../auth/sign-in/sign-in-presenter'
 import FakeComponent from '../test/fake-component'
 import ApiGateway from "../common/api-gateway";

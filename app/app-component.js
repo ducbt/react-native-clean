@@ -7,7 +7,7 @@ import HomeComponent from "../home/home-component";
 import SignInComponent from "../auth/sign-in/sign-in-component";
 import AutoWire from "../common/auto-wire";
 import {connect} from "react-redux";
-import AppComponentPresenter from "../home/home-component.presenter";
+import AppComponentPresenter from "../home/home-presenter";
 
 let topDrawer = DrawerNavigator({
 	Home: {screen: HomeComponent},
