@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "start-local-ios": "concurrently --kill-others \"nodemon server.js\" \"react-native run-ios\" ",
-    "start-local-android": "concurrently --kill-others \"nodemon server.js\" \"react-native run-ios\" ",
+    "start-local-ios": "concurrently --kill-others \"node server.js\" \"react-native run-ios\" ",
+    "start-local-android": "concurrently --kill-others \"node server.js\" \"react-native run-ios\" ",
     "test": "jest"
   },
   "dependencies": {
