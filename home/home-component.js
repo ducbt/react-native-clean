@@ -28,7 +28,8 @@ class HomeComponent extends Component {
 
 				<View style={styles.subContainer}>
 
-					<Text>I am the home component {this.props.homeViewModel.signedIn.toString()}</Text>
+					<Text>I am the home component</Text>
+					<Text>Signed-in status is = {this.props.homeViewModel.signedIn.toString()}</Text>
 
 				</View>
 
