@@ -16,7 +16,6 @@ export default class HomeComponent extends Component {
 		return (
 			<View style={styles.container}>
 
-
 				<View style={styles.subContainer}>
 
 					<Text>I am the home component</Text>

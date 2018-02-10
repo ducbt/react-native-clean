@@ -4,14 +4,13 @@ import FakeComponent from '../../test/fake-component'
 import StorageGateway from "../../common/storage-gateway";
 import FakeStore from "../../test/fake-store";
 import StubGenerator from "../../test/stub-generator";
-import AppComponentPresenter from "../../app/app-component.presenter";
+import AppComponentPresenter from "../../home/home-component.presenter";
 
 let fakeStore = null;
 let fakeAppComponent = null;
 let fakeSignInComponent = null;
 let signInPresenter = null;
 let appComponentPresenter = null;
-
 
 beforeEach(() => {
 	fakeStore = new FakeStore();

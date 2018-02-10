@@ -1,4 +1,4 @@
-import AppComponentPresenter from './app-component.presenter';
+import HomeComponentPresenter from './home-component.presenter';
 import SignInComponentPresenter from '../auth/sign-in/sign-in-presenter'
 import FakeComponent from '../test/fake-component'
 import ApiGateway from "../common/api-gateway";
@@ -9,41 +9,37 @@ let fakeStore = null;
 let fakeSignInComponent = null;
 let fakeAppComponent = null;
 let signInPresenter = null;
-let appComponentPresenter = null;
+let homeComponentPresenter = null;
 
 beforeEach(() => {
 	fakeStore = new FakeStore();
 	fakeSignInComponent = new FakeComponent(fakeStore);
 	fakeAppComponent = new FakeComponent(fakeStore);
 	signInPresenter = new SignInComponentPresenter(fakeSignInComponent.dispatch);
-	appComponentPresenter = new AppComponentPresenter(fakeAppComponent.dispatch);
+	homeComponentPresenter = new HomeComponentPresenter(fakeAppComponent.dispatch);
 });
 
 it('should load initial drawer menu', async () => {
-	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn']);
+	expect(fakeAppComponent.props.homeViewModel).toEqual({});
 });
 
-it('should add protected item to drawer when user logs in', async () => {
+it('should have logged in user message when successfully signed in', async () => {
 
 	ApiGateway.prototype.save = StubGenerator.successfulLogin();
 
 	await signInPresenter.signIn(fakeSignInComponent);
 
-	appComponentPresenter.load();
-
-	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn', 'Books']);
+	expect(fakeAppComponent.props.homeViewModel.signedIn).toBe(true);
 
 });
 
-it('should not add protected item to drawer when user logs in', async () => {
+it('should NOT have logged in user message when NOT successfully signed in', async () => {
 
 	ApiGateway.prototype.save = StubGenerator.failedLogin();
 
 	await signInPresenter.signIn(fakeSignInComponent);
 
-	appComponentPresenter.load();
-
-	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn']);
+	expect(fakeAppComponent.props.homeViewModel.signedIn).toBe(false);
 
 });
 

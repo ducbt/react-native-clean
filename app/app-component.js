@@ -7,7 +7,7 @@ import HomeComponent from "../home/home-component";
 import SignInComponent from "../auth/sign-in/sign-in-component";
 import AutoWire from "../common/auto-wire";
 import {connect} from "react-redux";
-import AppComponentPresenter from "./app-component.presenter";
+import AppComponentPresenter from "../home/home-component.presenter";
 
 let topDrawer = DrawerNavigator({
 	Home: {screen: HomeComponent},
@@ -24,7 +24,7 @@ const AppNavigator = StackNavigator({
 	})
 });
 
-class AppComponent extends Component {
+export default class AppComponent extends Component {
 
 	componentWillMount() {
 		console.log('component mounting');
@@ -36,8 +36,4 @@ class AppComponent extends Component {
 		);
 	}
 }
-
-export default connect((state) => {
-	return state;
-}, (dispatch) => (AutoWire.wire(AppComponentPresenter, dispatch, [])))(AppComponent);
 
