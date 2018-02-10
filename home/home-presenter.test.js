@@ -20,7 +20,7 @@ beforeEach(() => {
 });
 
 it('should load initial drawer menu', async () => {
-	expect(fakeAppComponent.props.homeViewModel).toEqual({});
+	expect(fakeAppComponent.props.homeViewModel).toEqual({signedIn:false});
 });
 
 it('should have logged in user message when successfully signed in', async () => {

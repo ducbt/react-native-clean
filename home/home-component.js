@@ -22,13 +22,13 @@ class HomeComponent extends Component {
 
 	render() {
 
-		console.log(this.props);
+		console.log(this.props.homeViewModel);
 		return (
 			<View style={styles.container}>
 
 				<View style={styles.subContainer}>
 
-					<Text>I am the home component </Text>
+					<Text>I am the home component {this.props.homeViewModel.signedIn.toString()}</Text>
 
 				</View>
 
