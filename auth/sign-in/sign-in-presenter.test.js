@@ -37,19 +37,7 @@ it('should load initial viewmodel', async () => {
 
 it('successful sign-in', async () => {
 
-	fakeSignInComponent.state = {userName: 'blah', password: 'blah_1'};
-	ApiGateway.prototype.save = StubGenerator.successfulLogin();
-	spyOn(ApiGateway.prototype, 'save').and.callThrough();
-	spyOn(StorageGateway, 'set');
-
-	await signInPresenter.signIn(fakeSignInComponent);
-
-	expect(ApiGateway.prototype.save).toHaveBeenCalledWith({userName: 'blah', password: 'blah_1'});
-	expect(fakeSignInComponent.props.signInViewModel.status).toBe('submitted-success');
-	expect(fakeSignInComponent.props.signInViewModel.message).toBe('user signIn successful');
-	expect(StorageGateway.set).toHaveBeenCalledWith('userToken', '123');
-
-	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn', 'Books']);
+//write the test
 
 });
 

@@ -24,27 +24,8 @@ export default class SignInPresenter {
 	}
 
 	async signIn(componentContext) {
-		let signInReqest = {userName: componentContext.state.userName, password: componentContext.state.password};
-		let signInResponse = await new UserRepository().signIn(signInReqest);
 
-		let signInModel = {};
-		signInModel.status = signInResponse.status;
-		signInModel.message = signInResponse.message;
-
-		if (signInModel.status === 'submitted-success') {
-			await StorageGateway.set('userToken', signInResponse.token);
-		}
-
-		this.dispatch({
-			type: 'SIGNIN', model: signInModel, vm: (model) => {
-				const viewModel = {
-					status: model.status,
-					message: model.message,
-				};
-				return viewModel;
-			}
-		});
-
+		//integration goes here
 
 	}
 
