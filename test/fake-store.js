@@ -1,4 +1,5 @@
 import {globalStateReducer} from "../common/state/global-state-reducer";
+import {InitialGlobalState} from "../common/state/initial-global-state";
 
 export default class FakeStore {
 
@@ -6,8 +7,7 @@ export default class FakeStore {
 	updateProps = [];
 
 	initialise = (initialState, action, updateProps) => {
-
-		this.state = globalStateReducer(initialState, action);
+        this.state = InitialGlobalState.generate();
 		this.updateProps.push(updateProps);
 		return this.state;
 	};
@@ -17,7 +17,5 @@ export default class FakeStore {
 		this.updateProps.forEach((updateProp) => { updateProp();});
 		return this.state;
 	};
-
-
 
 }

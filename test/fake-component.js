@@ -6,7 +6,7 @@ export default class FakeComponent {
 
 	constructor(fakeStore) {
 		this.fakeStore = fakeStore;
-		this.props = this.fakeStore.initialise(undefined,{}, this.updateProps);
+		this.props = this.fakeStore.initialise(undefined, {}, this.updateProps);
 	}
 
 	dispatch = (action) => {
