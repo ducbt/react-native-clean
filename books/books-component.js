@@ -3,8 +3,6 @@ import {
 	StyleSheet,
 	Text,
 	View,
-	Button,
-	TextInput
 } from 'react-native';
 
 export default class HomeComponent extends Component {
@@ -19,7 +17,7 @@ export default class HomeComponent extends Component {
 
 				<View style={styles.subContainer}>
 
-					<Text>I am the home component</Text>
+					<Text>I am the (authenticated) books component</Text>
 					
 				</View>
 
