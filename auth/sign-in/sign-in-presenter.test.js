@@ -20,11 +20,11 @@ beforeEach(() => {
 	signInPresenter = new SignInPresenter(fakeSignInComponent.dispatch);
 });
 
-it('should set initial viewmodel into component', async () => {
+it('should set initial viewmodel', async () => {
 	expect(fakeSignInComponent.props.signInViewModel).toEqual({});
 });
 
-it('should set intial state', async () => {
+it('should set initial state', async () => {
 	const globalState = signInPresenter.getInitialState();
 	expect(globalState).toEqual({userName: '', password: ''});
 });
