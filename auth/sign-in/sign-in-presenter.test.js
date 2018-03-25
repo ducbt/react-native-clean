@@ -49,8 +49,6 @@ it('successful sign-in', async () => {
 	expect(fakeSignInComponent.props.signInViewModel.message).toBe('user signIn successful');
 	expect(StorageGateway.set).toHaveBeenCalledWith('userToken', '123');
 
-	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn', 'Books']);
-
 });
 
 it('un-successful sign-in', async () => {
@@ -65,7 +63,6 @@ it('un-successful sign-in', async () => {
 	expect(fakeSignInComponent.props.signInViewModel.message).toBe('user signIn failed');
 	expect(StorageGateway.set).not.toHaveBeenCalled();
 
-	expect(fakeAppComponent.props.drawerItems).toEqual(['Home', 'SignIn']);
 
 });
 

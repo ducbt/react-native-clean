@@ -4,7 +4,6 @@ export class InitialGlobalState {
             booksListViewModel:{},
             homeViewModel:{signedIn:false},
             signInViewModel:{},
-            drawerItems:['Home','SignIn'],
             authModel:{}
         }
     }
