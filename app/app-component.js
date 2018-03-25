@@ -30,6 +30,9 @@ class AppComponent extends Component {
 	componentWillMount() {}
 
 	render() {
+
+	    console.log(this.props.drawerItems);;
+
 		return (
 			<AppNavigator/>
 		);
