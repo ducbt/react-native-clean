@@ -1,18 +1,18 @@
-export default class AutoWire {
+export default class AutoWire{
 
-	static wire(presenterFunc, dispatch, maps) {
-		let plainObject = {};
+  static wire(presenterFunc, dispatch, maps) {
+    let plainObject = {};
 
-		let booksPresenter = new presenterFunc(dispatch);
-		plainObject.getInitialState = booksPresenter.getInitialState;
-		plainObject.load = booksPresenter.load;
-		plainObject.dispatch = booksPresenter.dispatch;
+    let booksPresenter = new presenterFunc(dispatch);
+    plainObject.getInitialState = booksPresenter.getInitialState;
+    plainObject.load = booksPresenter.load;
+    plainObject.dispatch = booksPresenter.dispatch;
 
-		maps.forEach((propString) => {
-			plainObject[propString] = booksPresenter[propString];
-		});
+    maps.forEach((propString) => {
+      plainObject[propString] = booksPresenter[propString];
+    });
 
-		return plainObject;
-	}
+    return plainObject;
+  }
 
 }

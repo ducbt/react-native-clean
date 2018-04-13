@@ -1,5 +1,5 @@
-export default class AppConfig {
+export default class AppConfig{
 
-	static apiBasePath = 'http://localhost:19020/api';
+  static apiBasePath = 'http://localhost:19020/api';
 
 }

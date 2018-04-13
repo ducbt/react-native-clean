@@ -1,8 +1,8 @@
-export default class HomePresenter {
-	dispatch = null;
+export default class HomePresenter{
+  dispatch = null;
 
-	constructor(dispatch) {
-		this.dispatch = dispatch;
-	}
+  constructor(dispatch) {
+    this.dispatch = dispatch;
+  }
 
 }
