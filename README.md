@@ -1,4 +1,4 @@
-The Clean Architecture for React Native
+### The Clean Architecture for React Native
 
 This conforms to Uncle Bobs Clean Architecture where everything is a plugin. 
 
